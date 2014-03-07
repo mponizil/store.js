@@ -1,9 +1,10 @@
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) define('store', ['json2'], factory);
-  else root.store = factory(root, root.JSON);
-}(this, function(win, JSON) {
+  else root.store = factory(root.JSON);
+}(this, function(JSON) {
 
 	var store = {},
+		win = window,
 		doc = win.document,
 		localStorageName = 'localStorage',
 		scriptTag = 'script',

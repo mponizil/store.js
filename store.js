@@ -1,4 +1,8 @@
-;(function(win){
+(function (root, factory) {
+  if (typeof define === 'function' && define.amd) define('store', ['json2'], factory);
+  else root.store = factory(root, root.JSON);
+}(this, function(win, JSON) {
+
 	var store = {},
 		doc = win.document,
 		localStorageName = 'localStorage',
@@ -159,9 +163,7 @@
 		store.disabled = true
 	}
 	store.enabled = !store.disabled
-	
-	if (typeof module != 'undefined' && module.exports) { module.exports = store }
-	else if (typeof define === 'function' && define.amd) { define(store) }
-	else { win.store = store }
-	
-})(Function('return this')());
+
+	return store;
+
+}));
